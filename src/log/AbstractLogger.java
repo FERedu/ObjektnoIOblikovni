@@ -1,12 +1,14 @@
 package log;
 
 import java.io.PrintStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.annotation.Nonnull;
 
 public abstract class AbstractLogger implements ILogger{
 
-	
+	private SimpleDateFormat dateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
 	private final @Nonnull PrintStream output;
 
 	public AbstractLogger(@Nonnull PrintStream output) {
@@ -15,12 +17,13 @@ public abstract class AbstractLogger implements ILogger{
 
 	@Override
 	public void log( @Nonnull String message) {
-		output.println(message);
+		log(message, MessageType.Plain);
 	}
 
 	@Override
 	public void log(@Nonnull String message,@Nonnull MessageType type) {
-		output.println(type+"\t"+message);
+		String formatedDate = dateTimeFormatter.format(new Date());
+		output.println(type+"("+formatedDate+"):"+message);
 	}
 
 	@Override

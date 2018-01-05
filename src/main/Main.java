@@ -16,7 +16,7 @@ public class Main {
 	
 	
 	public static void main(String[] args) throws UnknownHostException, IOException {
-		Socket socket = new Socket("localhost", 50000);
+		Socket socket = new Socket("localhost", 60000);
 		LoggerProvider.initialize(socket);
 		
 		SwingUtilities.invokeLater(()->{
