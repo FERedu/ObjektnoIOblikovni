@@ -36,9 +36,11 @@ public class LoggerProvider {
 		String loggerDecorationPackage = properties.getProperty("log.decoration.package");
 		String[] loggerDecorationImpls = properties.getProperty("log.decoration.impl").split(";");
 		for(String loggerDecorationImpl:loggerDecorationImpls) {
-			Class<?> clazz = LoggerProvider.class.getClassLoader().loadClass(loggerDecorationPackage+"."+loggerDecorationImpl);
-			Constructor<?> constructor = clazz.getConstructor(ILogger.class,Properties.class);
-			logger = (ILogger) constructor.newInstance(logger,properties);
+			if(!loggerDecorationImpl.isEmpty()) {
+				Class<?> clazz = LoggerProvider.class.getClassLoader().loadClass(loggerDecorationPackage+"."+loggerDecorationImpl);
+				Constructor<?> constructor = clazz.getConstructor(ILogger.class,Properties.class);
+				logger = (ILogger) constructor.newInstance(logger,properties);
+			}
 		}
 	}
 	
