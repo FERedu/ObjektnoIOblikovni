@@ -3,7 +3,6 @@ package main;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Properties;
 
@@ -18,22 +17,20 @@ public class Main {
 	private Main() {}
 	
 	
-	public static void main(String[] args) throws UnknownHostException, IOException {
+	public static void main(String[] args) throws Exception {
 
 		//Load properties
 		Properties properties = new Properties();
-		properties.load(new FileInputStream(new File("properties/app.properties")));
-		String server = properties.getProperty("log.server");
-		int port = Integer.parseInt(properties.getProperty("log.port"));
+		try(FileInputStream fileInputStream = new FileInputStream(new File("properties/app.properties"))){
+			properties.load(fileInputStream);
+		}
 
 		//Initialize log
-		Socket socket = new Socket(server, port);
-		LoggerProvider.initialize(socket);
+		LoggerProvider.initialize(properties);
 
 		//Start application UI
 		SwingUtilities.invokeLater(()->{
 		ApplicationFrame frame = new ApplicationFrame();
-		frame.addCloseHook(socket);
 		frame.addCloseHook(()->LoggerProvider.close());
 		frame.setVisible(true);
 	});

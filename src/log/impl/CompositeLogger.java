@@ -1,8 +1,11 @@
-package log;
+package log.impl;
 
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import log.ILogger;
+import log.MessageType;
 
 public class CompositeLogger implements ILogger{
 

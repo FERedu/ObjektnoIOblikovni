@@ -1,6 +1,9 @@
-package log;
+package log.decoration;
 
 import javax.annotation.Nonnull;
+
+import log.ILogger;
+import log.MessageType;
 
 public abstract class AbstractDecoratorLogger implements ILogger{
 

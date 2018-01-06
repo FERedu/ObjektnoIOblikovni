@@ -1,7 +1,10 @@
 package main;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.util.Properties;
 
 import javax.swing.SwingUtilities;
 
@@ -12,7 +15,15 @@ public class LogListenMain {
 	private LogListenMain() {}
 	
 	public static void main(String[] args) throws IOException {
-		ServerSocket socket = new ServerSocket(60000);
+		
+		//Load properties
+		Properties properties = new Properties();
+		try(FileInputStream fileInputStream = new FileInputStream(new File("properties/app.properties"))){
+			properties.load(fileInputStream);
+		}
+		int port = Integer.parseInt(properties.getProperty("log.port"));
+
+		ServerSocket socket = new ServerSocket(port);
 		
 		SwingUtilities.invokeLater(()->{
 			LogListenApplication application = new LogListenApplication(socket);

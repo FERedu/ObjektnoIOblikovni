@@ -6,7 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,7 @@ import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
 
 import log.LoggerProvider;
+import log.MessageType;
 
 public class ApplicationFrame extends JFrame{
 	
@@ -63,11 +66,26 @@ public class ApplicationFrame extends JFrame{
 				int choice = JOptionPane.showConfirmDialog(null, new JLabel(image), "Save?", JOptionPane.YES_NO_OPTION);
 				if(choice==JOptionPane.YES_OPTION) {
 					
-					JFileChooser saveDialog = new JFileChooser(System.getProperty("user.home"));
+					JFileChooser saveDialog = new JFileChooser("pictures/");
 					choice = saveDialog.showSaveDialog(null);
 					if(choice == JFileChooser.APPROVE_OPTION) {
 						try {
-							ImageIO.write(rawImage, "PNG", saveDialog.getSelectedFile());
+							File selectedFile = saveDialog.getSelectedFile();
+							if(selectedFile!=null) {
+								if(!Files.exists(selectedFile.toPath())) {
+									ImageIO.write(rawImage, "PNG", selectedFile);
+								}
+								else {
+									String message = selectedFile.getName() + " already exists!";
+									LoggerProvider.get().log(message, MessageType.Warning);
+									JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.WARNING_MESSAGE);
+								}
+							}
+							else {
+								String message = "Selected file was null!";
+								LoggerProvider.get().log(message, MessageType.Warning);
+								JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.WARNING_MESSAGE);
+							}
 						} catch (IOException e1) {
 							//TODO: do something useful
 						}				
