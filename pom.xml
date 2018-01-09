@@ -4,7 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>EESTEC</groupId>
     <artifactId>EESTEC</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0</version>
+
+    <packaging>jar</packaging>
 
     <build>
         <plugins>
