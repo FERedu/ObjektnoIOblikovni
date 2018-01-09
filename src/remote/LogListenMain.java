@@ -1,4 +1,4 @@
-package main;
+package remote;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,17 +6,13 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.Properties;
 
-import javax.swing.SwingUtilities;
-
-import ui.LogListenApplication;
-
 public class LogListenMain {
 
 	private LogListenMain() {}
 	
 	public static void main(String[] args) throws IOException {
 		
-		//Load properties
+		// Load properties
 		Properties properties = new Properties();
 		try(FileInputStream fileInputStream = new FileInputStream(new File("properties/app.properties"))){
 			properties.load(fileInputStream);
@@ -25,14 +21,9 @@ public class LogListenMain {
 
 		ServerSocket socket = new ServerSocket(port);
 		
-		SwingUtilities.invokeLater(()->{
 			LogListenApplication application = new LogListenApplication(socket);
 			application.setVisible(true);
-		});
+		}
 		
 		
 	}
-	
-	
-	
-}

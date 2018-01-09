@@ -1,23 +1,17 @@
-package ui;
+package remote;
 
-import java.awt.BorderLayout;
+import javax.annotation.Nonnull;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.CheckForNull;
-import javax.annotation.Nonnull;
-import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.WindowConstants;
 
 public class LogListenApplication extends JFrame{
 
