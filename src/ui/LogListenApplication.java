@@ -1,4 +1,4 @@
-package remote;
+package ui;
 
 import javax.annotation.Nonnull;
 import javax.swing.*;

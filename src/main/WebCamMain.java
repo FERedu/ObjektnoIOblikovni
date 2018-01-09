@@ -11,10 +11,10 @@ import javax.swing.SwingUtilities;
 import log.LoggerProvider;
 import ui.ApplicationFrame;
 
-public class Main {
+public class WebCamMain {
 
 	
-	private Main() {}
+	private WebCamMain() {}
 	
 	
 	public static void main(String[] args) throws Exception {
