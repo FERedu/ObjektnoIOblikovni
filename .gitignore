@@ -81,6 +81,7 @@ local.properties
 
 .idea
 *.iml
+target
 
 # CMake
 cmake-build-debug/
