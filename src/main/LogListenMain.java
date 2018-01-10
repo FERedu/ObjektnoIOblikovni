@@ -21,7 +21,7 @@ public class LogListenMain {
 		}
 		int port = Integer.parseInt(properties.getProperty("log.port"));
 
-		ServerSocket socket = new ServerSocket(port);
+			ServerSocket socket = new ServerSocket(port);
 		
 			LogListenApplication application = new LogListenApplication(socket);
 			application.setVisible(true);

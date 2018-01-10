@@ -27,9 +27,6 @@ import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
 
-import log.LoggerProvider;
-import log.MessageType;
-
 public class ApplicationFrame extends JFrame{
 	
 	
@@ -58,8 +55,6 @@ public class ApplicationFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				LoggerProvider.get().log("Snap performed");
-				
 				BufferedImage rawImage = webcam.getImage();
 				ImageIcon image = new ImageIcon(rawImage);
 				
@@ -77,13 +72,11 @@ public class ApplicationFrame extends JFrame{
 								}
 								else {
 									String message = selectedFile.getName() + " already exists!";
-									LoggerProvider.get().log(message, MessageType.Warning);
 									JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.WARNING_MESSAGE);
 								}
 							}
 							else {
 								String message = "Selected file was null!";
-								LoggerProvider.get().log(message, MessageType.Warning);
 								JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.WARNING_MESSAGE);
 							}
 						} catch (IOException e1) {
