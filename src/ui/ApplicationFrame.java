@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
@@ -50,7 +51,7 @@ public class ApplicationFrame extends JFrame{
 		webcamPanel.setImageSizeDisplayed(true);
 
 		
-		JButton snapButton = new JButton(new AbstractAction("Snap") {
+		AbstractAction abstractAction = new AbstractAction("Snap") {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -85,7 +86,8 @@ public class ApplicationFrame extends JFrame{
 					}
 				}
 			}
-		});
+		};
+		JButton snapButton = new JButton(abstractAction);
 		
 		JPanel actionPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		actionPanel.add(snapButton);
@@ -115,7 +117,11 @@ public class ApplicationFrame extends JFrame{
 					closeable.close();
 				} catch (Exception e1) {
 					e1.printStackTrace();
+					return;
 				}
+			
+			
+			
 			removeWindowListener(this);
 		}
 	}
