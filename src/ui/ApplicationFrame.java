@@ -28,6 +28,8 @@ import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
 
+import log.FileLogger;
+
 public class ApplicationFrame extends JFrame{
 	
 	
@@ -58,6 +60,8 @@ public class ApplicationFrame extends JFrame{
 				
 				BufferedImage rawImage = webcam.getImage();
 				ImageIcon image = new ImageIcon(rawImage);
+				
+				FileLogger.getFileLogger().log("Snap");
 				
 				int choice = JOptionPane.showConfirmDialog(null, new JLabel(image), "Save?", JOptionPane.YES_NO_OPTION);
 				if(choice==JOptionPane.YES_OPTION) {
