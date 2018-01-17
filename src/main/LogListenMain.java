@@ -19,6 +19,7 @@ public class LogListenMain {
 		try(FileInputStream fileInputStream = new FileInputStream(new File("properties/app.properties"))){
 			properties.load(fileInputStream);
 		}
+		
 		int port = Integer.parseInt(properties.getProperty("log.port"));
 
 			ServerSocket socket = new ServerSocket(port);
