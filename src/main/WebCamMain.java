@@ -8,6 +8,7 @@ import javax.swing.SwingUtilities;
 
 import logger.ALogger;
 import logger.FileLogger;
+import logger.ILogger;
 import logger.LoggerFactory;
 import logger.SystemLogger;
 import ui.ApplicationFrame;
@@ -25,7 +26,7 @@ public class WebCamMain {
 		
 		
 		LoggerFactory.createLogger(properties);
-		ALogger logger = LoggerFactory.getLogger();
+		ILogger logger = LoggerFactory.getLogger();
 		logger.log("Starting");
 		//Start application UI
 		SwingUtilities.invokeLater(()->{

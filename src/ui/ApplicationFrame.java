@@ -30,6 +30,7 @@ import com.github.sarxos.webcam.WebcamResolution;
 
 import logger.FileLogger;
 import logger.LoggerFactory;
+import logger.MessageType;
 
 public class ApplicationFrame extends JFrame{
 	
@@ -78,6 +79,7 @@ public class ApplicationFrame extends JFrame{
 								}
 								else {
 									String message = selectedFile.getName() + " already exists!";
+									LoggerFactory.getLogger().log("Could not save image", MessageType.Warning);
 									JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.WARNING_MESSAGE);
 								}
 							}
