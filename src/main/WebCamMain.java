@@ -6,10 +6,10 @@ import java.util.Properties;
 
 import javax.swing.SwingUtilities;
 
-import log.ALogger;
-import log.FileLogger;
-import log.LoggerFactory;
-import log.SystemLogger;
+import logger.ALogger;
+import logger.FileLogger;
+import logger.LoggerFactory;
+import logger.SystemLogger;
 import ui.ApplicationFrame;
 
 public class WebCamMain {

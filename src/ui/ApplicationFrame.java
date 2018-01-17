@@ -28,8 +28,8 @@ import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
 
-import log.FileLogger;
-import log.LoggerFactory;
+import logger.FileLogger;
+import logger.LoggerFactory;
 
 public class ApplicationFrame extends JFrame{
 	
